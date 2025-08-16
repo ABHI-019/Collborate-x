@@ -13,15 +13,23 @@ const app = express()
 
 app.use(express.json())
 
-const allowedOrigin = process.env.CLIENT_ORIGIN || "*"
-app.use(cors({ origin: allowedOrigin, credentials: true }))
+// Simplified CORS configuration
+app.use(cors({
+    origin: true, // Allow all origins for now
+    credentials: true
+}))
 
 app.use(express.static(path.join(__dirname, "public"))) // Serve static files
+
+// Health check endpoint
+app.get("/health", (req: Request, res: Response) => {
+    res.json({ status: "OK", timestamp: new Date().toISOString() })
+})
 
 const server = http.createServer(app)
 const io = new Server(server, {
        cors: {
-	       origin: allowedOrigin,
+	       origin: true, // Allow all origins for now
 	       credentials: true
        },
        maxHttpBufferSize: 1e8,

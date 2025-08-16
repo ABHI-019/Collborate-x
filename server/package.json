@@ -5,6 +5,7 @@
 	"scripts": {
 		"dev": "nodemon --exec ts-node src/server.ts",
 		"build": "tsc --pretty",
+		"postbuild": "node scripts/copy-public.js",
 		"start": "node dist/server.js"
 	},
 	"keywords": [],

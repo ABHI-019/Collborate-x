@@ -8,9 +8,11 @@ services:
     rootDir: server
     envVars:
       - key: CLIENT_ORIGIN
-        value: https://your-client-url.onrender.com
+        value: https://collaboratex-client.vercel.app
       - key: PORT
         value: 5000
+      - key: NODE_ENV
+        value: production
   - type: web
     name: collaboratex-client
     env: static
@@ -20,4 +22,4 @@ services:
     rootDir: client
     envVars:
       - key: VITE_BACKEND_URL
-        value: https://your-server-url.onrender.com
+        value: https://collaboratex-server.onrender.com

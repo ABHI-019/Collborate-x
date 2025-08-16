@@ -265,8 +265,15 @@ io.on("connection", (socket) => {
 const PORT = process.env.PORT || 5000
 
 app.get("/", (req: Request, res: Response) => {
-	// Send the index.html file
-	res.sendFile(path.join(__dirname, "..", "public", "index.html"))
+	// Send the index.html file from the correct path after build
+	const indexPath = path.join(__dirname, "public", "index.html")
+	res.sendFile(indexPath)
+})
+
+// Add a fallback route for SPA
+app.get("*", (req: Request, res: Response) => {
+	const indexPath = path.join(__dirname, "public", "index.html")
+	res.sendFile(indexPath)
 })
 
 server.listen(PORT, () => {

@@ -13,17 +13,19 @@ const app = express()
 
 app.use(express.json())
 
-app.use(cors())
+const allowedOrigin = process.env.CLIENT_ORIGIN || "*"
+app.use(cors({ origin: allowedOrigin, credentials: true }))
 
 app.use(express.static(path.join(__dirname, "public"))) // Serve static files
 
 const server = http.createServer(app)
 const io = new Server(server, {
-	cors: {
-		origin: "*",
-	},
-	maxHttpBufferSize: 1e8,
-	pingTimeout: 60000,
+       cors: {
+	       origin: allowedOrigin,
+	       credentials: true
+       },
+       maxHttpBufferSize: 1e8,
+       pingTimeout: 60000,
 })
 
 let userSocketMap: User[] = []

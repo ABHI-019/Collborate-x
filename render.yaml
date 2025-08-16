@@ -1,0 +1,23 @@
+services:
+  - type: web
+    name: collaboratex-server
+    env: node
+    plan: free
+    buildCommand: npm install && npm run build
+    startCommand: npm start
+    rootDir: server
+    envVars:
+      - key: CLIENT_ORIGIN
+        value: https://your-client-url.onrender.com
+      - key: PORT
+        value: 5000
+  - type: web
+    name: collaboratex-client
+    env: static
+    plan: free
+    buildCommand: npm install && npm run build
+    staticPublishPath: dist
+    rootDir: client
+    envVars:
+      - key: VITE_BACKEND_URL
+        value: https://your-server-url.onrender.com

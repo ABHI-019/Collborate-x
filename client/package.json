@@ -55,12 +55,8 @@
         "prettier-plugin-tailwindcss": "^0.5.11",
         "tailwindcss": "^3.4.1",
         "ts-node": "^10.9.2",
-        "typescript": "^5.4.5",
-<<<<<<< HEAD
-        "vite": "^5.4.11"
-=======
-        "vite": "^7.0.6"
->>>>>>> 4832c3a8b92bde4bdf8c3b54e27223a1cd07faa9
+    "typescript": "^5.4.5",
+    "vite": "^7.0.6"
     },
     "main": "index.js",
     "keywords": [],

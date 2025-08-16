@@ -7,7 +7,7 @@ function GitHubCorner() {
 
     return (
         <a
-            href="https://github.com/vibhav30"
+            href="https://github.com/ABHI-019"
             className="github-corner"
             aria-label="View source on GitHub"
             target="_blank"

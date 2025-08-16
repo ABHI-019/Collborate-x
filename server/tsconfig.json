@@ -1,14 +1,32 @@
 {
 	"compilerOptions": {
+<<<<<<< HEAD
 	  "target": "ES2020",
 	  "module": "CommonJS",
+=======
+	  "target": "ES2022",
+	  "module": "CommonJS",
+	  "moduleResolution": "Node",
+>>>>>>> 4832c3a8b92bde4bdf8c3b54e27223a1cd07faa9
 	  "strict": true,
 	  "esModuleInterop": true,
 	  "skipLibCheck": true,
 	  "outDir": "./dist", 
+<<<<<<< HEAD
 	  "rootDir": "./src"   // Ensure rootDir is set to your source folder
 	},
 	"include": ["src"],
 	"exclude": ["node_modules"]
+=======
+	  "rootDir": "./src",
+	  "allowSyntheticDefaultImports": true,
+	  "resolveJsonModule": true,
+	  "declaration": true,
+	  "declarationMap": true,
+	  "sourceMap": true
+	},
+	"include": ["src"],
+	"exclude": ["node_modules", "dist"]
+>>>>>>> 4832c3a8b92bde4bdf8c3b54e27223a1cd07faa9
   }
   

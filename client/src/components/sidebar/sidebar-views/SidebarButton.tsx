@@ -1,10 +1,11 @@
 import { useChatRoom } from "@/context/ChatContext"
 import { useViews } from "@/context/ViewContext"
 import { VIEWS } from "@/types/view"
+import React from "react"
 
 interface ViewButtonProps {
     viewName: VIEWS
-    icon: JSX.Element
+    icon: React.JSX.Element
 }
 
 const ViewButton = ({ viewName, icon }: ViewButtonProps) => {

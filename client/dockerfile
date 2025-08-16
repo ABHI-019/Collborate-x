@@ -1,0 +1,72 @@
+# FROM node:latest as BUILD_IMAGE
+
+
+# WORKDIR /
+
+
+# COPY package.json .
+# COPY package-lock.json .
+
+# RUN npm install 
+
+# COPY . .
+
+
+# RUN npm run build
+
+# FROM node:latest as PRODUCTION_IMAGE
+
+# WORKDIR /
+
+# COPY --from=BUILD_IMAGE /dist/ /dist/
+
+# EXPOSE 80
+
+# COPY package.json .
+# COPY vite.config.mts .
+
+# RUN npm install typescript
+# EXPOSE 80
+# CMD ["npm", "run", "preview"]
+
+
+
+# Stage 1: Build the application
+FROM node:18-alpine as BUILD_IMAGE
+
+# Set the working directory
+WORKDIR /app
+
+# Copy package.json and package-lock.json
+COPY package.json package-lock.json ./
+
+# Install dependencies
+RUN npm install
+
+# Copy the rest of the application
+COPY . .
+
+# Build the application
+RUN npm run build
+
+# Stage 2: Production image
+FROM node:18-alpine as PRODUCTION_IMAGE
+
+# Set the working directory
+WORKDIR /app
+
+# Copy the built application from the build stage
+COPY --from=BUILD_IMAGE /app/dist /app/dist
+
+# Copy necessary files for preview
+COPY package.json vite.config.mts ./
+
+# Install necessary dependencies for serving
+RUN npm install --production
+RUN npm install typescript
+
+# Expose port 80
+EXPOSE 80
+
+# Start the application in preview mode
+CMD ["npm", "run", "preview"]

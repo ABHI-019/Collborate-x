@@ -21,6 +21,7 @@ interface AppContext {
     setActivityState: (state: ACTIVITY_STATE) => void
     drawingData: DrawingData
     setDrawingData: (data: DrawingData) => void
+    backendStatus: 'connected' | 'disconnected' | 'checking'
 }
 
 export { ACTIVITY_STATE }
